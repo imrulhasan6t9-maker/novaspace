@@ -4,133 +4,645 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaSpace | My Website</title>
+<title>NovaSpace | Beyond Imagination</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 <style>
-* {box-sizing:border-box;margin:0;padding:0}
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+:root {
+  --bg:#080b19;
+  --card:#11172c;
+  --purple:#9675ff;
+  --cyan:#48dfff;
+  --text:#f5f5ff;
+  --muted:#a5abc3;
+}
+
 body {
- font-family:Arial,sans-serif;
- background:#080b1b;
- color:white;
- text-align:center;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
 }
-header {
- padding:25px;
- background:#151a36;
+
+a {text-decoration:none;color:inherit}
+
+.container {
+  width:88%;
+  max-width:1200px;
+  margin:auto;
 }
-header h2 {color:#a58aff;font-size:30px}
-nav {margin-top:15px}
-nav a {
- color:white;
- text-decoration:none;
- margin:12px;
+
+/* NAVBAR */
+
+nav {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  padding:20px 0;
+  background:#080b19cc;
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid #ffffff12;
 }
+
+.nav-content {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo {
+  font-size:27px;
+  font-weight:900;
+  background:linear-gradient(90deg,#a58aff,#42ddff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.nav-links {
+  display:flex;
+  gap:32px;
+  list-style:none;
+}
+
+.nav-links a {
+  color:#c7c9db;
+  font-size:14px;
+  transition:.3s;
+}
+
+.nav-links a:hover {color:var(--cyan)}
+
+.nav-btn {
+  padding:12px 22px;
+  border:1px solid #9675ff;
+  border-radius:30px;
+  color:white;
+}
+
+.menu {
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+}
+
+/* HERO */
+
 .hero {
- min-height:75vh;
- display:flex;
- flex-direction:column;
- justify-content:center;
- align-items:center;
- padding:40px 20px;
- background:radial-gradient(circle,#453080,#080b1b 70%);
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding:130px 0 80px;
+  background:
+    radial-gradient(ellipse at 80% 30%,#40257566,transparent 40%),
+    radial-gradient(ellipse at 10% 80%,#13547b44,transparent 40%);
 }
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:720px;
+}
+
+.tag {
+  display:inline-block;
+  padding:10px 18px;
+  border:1px solid #9578ff66;
+  background:#9578ff16;
+  border-radius:30px;
+  color:#c5b5ff;
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:25px;
+}
+
 .hero h1 {
- font-size:clamp(40px,8vw,70px);
- margin-bottom:20px;
+  font-size:clamp(45px,7vw,85px);
+  font-weight:900;
+  line-height:1.12;
+  letter-spacing:-4px;
 }
-.hero h1 span {color:#54d5ff}
+
+.gradient {
+  background:linear-gradient(90deg,#a88aff,#42ddff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
 .hero p {
- color:#c4c7dd;
- max-width:550px;
- line-height:1.8;
- margin-bottom:30px;
+  max-width:570px;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:16px;
+  margin:25px 0 35px;
 }
+
 .btn {
- padding:15px 30px;
- background:linear-gradient(90deg,#805bff,#30c9ef);
- color:white;
- border-radius:30px;
- text-decoration:none;
- font-weight:bold;
+  display:inline-block;
+  padding:15px 30px;
+  border-radius:30px;
+  background:linear-gradient(100deg,#8a65ff,#35c9ec);
+  color:white;
+  font-weight:700;
+  transition:.3s;
+  border:none;
+  cursor:pointer;
 }
-section {padding:70px 20px}
+
+.btn:hover {
+  transform:translateY(-5px);
+  box-shadow:0 12px 35px #8865ff66;
+}
+
+.btn-outline {
+  background:transparent;
+  border:1px solid #777b9a;
+  margin-left:12px;
+}
+
+/* SPACE ORB */
+
+.orb {
+  position:absolute;
+  right:9%;
+  top:27%;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 25%,#e5dcff,#9a70ff 25%,#302078 60%,#080b19 80%);
+  box-shadow:0 0 90px #8865ff66,
+             inset -30px -25px 60px #080b19;
+  animation:float 6s ease-in-out infinite;
+}
+
+.orb:after {
+  content:"";
+  position:absolute;
+  width:440px;
+  height:110px;
+  border:3px solid #8c83ff99;
+  border-radius:50%;
+  top:100px;
+  left:-60px;
+  transform:rotate(-25deg);
+  box-shadow:0 0 25px #7f72ff66;
+}
+
+@keyframes float {
+  50% {transform:translateY(-25px) rotate(8deg)}
+}
+
+/* SECTIONS */
+
+section {padding:110px 0}
+
+.section-head {
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.section-head small {
+  color:var(--cyan);
+  letter-spacing:3px;
+  font-weight:700;
+}
+
+.section-head h2 {
+  font-size:clamp(32px,5vw,48px);
+  margin:15px 0;
+}
+
+.section-head p {
+  color:var(--muted);
+}
+
+/* SERVICES */
+
 .cards {
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- gap:20px;
- margin-top:30px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
 }
+
 .card {
- background:#171d39;
- border:1px solid #34395e;
- border-radius:18px;
- padding:30px;
- width:260px;
- transition:.3s;
+  padding:35px;
+  background:linear-gradient(145deg,#18203a,#0e1428);
+  border:1px solid #ffffff13;
+  border-radius:22px;
+  transition:.4s;
 }
-.card:hover {transform:translateY(-10px)}
-.card h3 {margin:15px}
-.card p {color:#b8bdd3;line-height:1.6}
-.about {background:#10152b}
+
+.card:hover {
+  transform:translateY(-12px);
+  border-color:#9475ff;
+  box-shadow:0 20px 50px #7155ff22;
+}
+
+.icon {
+  font-size:43px;
+  margin-bottom:23px;
+}
+
+.card h3 {
+  font-size:21px;
+  margin-bottom:15px;
+}
+
+.card p {
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* ABOUT */
+
+.about {
+  background:linear-gradient(120deg,#10172d,#171334);
+  border-top:1px solid #ffffff10;
+  border-bottom:1px solid #ffffff10;
+}
+
+.about-content {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:55px;
+  align-items:center;
+}
+
+.about-art {
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:120px;
+  background:radial-gradient(circle,#47327b,#11172c 70%);
+  border-radius:30px;
+}
+
+.about-text h2 {
+  font-size:40px;
+  margin-bottom:20px;
+}
+
+.about-text p {
+  color:var(--muted);
+  line-height:2;
+  margin-bottom:25px;
+}
+
+/* STATS */
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  text-align:center;
+}
+
+.stat {
+  padding:25px;
+  background:#11172c;
+  border-radius:18px;
+  border:1px solid #ffffff12;
+}
+
+.stat h3 {
+  font-size:38px;
+  color:var(--cyan);
+}
+
+.stat p {
+  color:var(--muted);
+  margin-top:10px;
+}
+
+/* CONTACT */
+
+.contact-box {
+  max-width:650px;
+  margin:auto;
+  padding:35px;
+  background:#11172c;
+  border:1px solid #ffffff15;
+  border-radius:25px;
+}
+
+.contact-box input,
+.contact-box textarea {
+  width:100%;
+  padding:16px;
+  margin-bottom:17px;
+  background:#080d20;
+  border:1px solid #353d5b;
+  border-radius:12px;
+  color:white;
+  font:inherit;
+  outline:none;
+}
+
+.contact-box input:focus,
+.contact-box textarea:focus {
+  border-color:var(--purple);
+}
+
+.contact-box textarea {
+  height:130px;
+  resize:vertical;
+}
+
+/* FOOTER */
+
 footer {
- background:#060817;
- color:#aaa;
- padding:25px;
+  padding:35px 0;
+  text-align:center;
+  background:#050713;
+  color:#9298b2;
+  border-top:1px solid #ffffff12;
+}
+
+footer .logo {margin-bottom:12px}
+
+/* REVEAL */
+
+.reveal {
+  opacity:0;
+  transform:translateY(35px);
+  transition:all .8s ease;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  .orb {
+    opacity:.25;
+    right:-120px;
+  }
+
+  .cards {grid-template-columns:1fr 1fr}
+
+  .about-content {grid-template-columns:1fr}
+}
+
+@media(max-width:600px) {
+  .menu {display:block}
+
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:75px;
+    left:0;
+    width:100%;
+    padding:25px;
+    background:#11172c;
+    flex-direction:column;
+    text-align:center;
+    gap:25px;
+  }
+
+  .nav-links.active {display:flex}
+
+  .nav-btn {display:none}
+
+  .hero h1 {letter-spacing:-2px}
+
+  .cards,.stats {grid-template-columns:1fr}
+
+  .btn-outline {
+    margin:15px 0 0;
+  }
+
+  section {padding:80px 0}
+
+  .about-art {min-height:220px}
 }
 </style>
 </head>
+
 <body>
 
-<header>
-<h2>🚀 NovaSpace</h2>
+<!-- NAVBAR -->
+
 <nav>
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#about">About</a>
+<div class="container nav-content">
+
+<a href="#home" class="logo">NovaSpace.</a>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#home" onclick="closeMenu()">Home</a></li>
+<li><a href="#services" onclick="closeMenu()">Services</a></li>
+<li><a href="#about" onclick="closeMenu()">About</a></li>
+<li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+</ul>
+
+<a href="#contact" class="nav-btn">Let's Talk ↗</a>
+
+</div>
 </nav>
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+<div class="container">
+
+<div class="hero-content">
+<div class="tag">✦ EXPLORE THE UNLIMITED</div>
+
+<h1>
+Think Beyond.<br>
+Create <span class="gradient">Infinity.</span>
+</h1>
+
+<p>
+Welcome to NovaSpace — a creative digital universe
+where imagination meets innovation. Discover a new
+world of technology, creativity and endless possibilities.
+</p>
+
+<a href="#services" class="btn">Explore Universe ↗</a>
+<a href="#about" class="btn btn-outline">Discover More</a>
+</div>
+
+</div>
+
+<div class="orb"></div>
 </header>
 
-<div class="hero" id="home">
-<h1>Welcome to <span>NovaSpace</span></h1>
-<p>
-Discover a beautiful digital world of creativity,
-technology and innovation. Your dream starts here!
-</p>
-<a href="#services" class="btn">Explore Now →</a>
-</div>
+<!-- SERVICES -->
 
 <section id="services">
-<h2>Our Services</h2>
+<div class="container">
+
+<div class="section-head reveal">
+<small>WHAT WE DO</small>
+<h2>Explore Our Universe</h2>
+<p>Ideas that turn imagination into reality.</p>
+</div>
+
 <div class="cards">
-<div class="card">
-<h1>🎨</h1>
+
+<div class="card reveal">
+<div class="icon">🎨</div>
 <h3>Creative Design</h3>
-<p>Beautiful and modern digital designs.</p>
+<p>Beautiful and modern designs that create unforgettable digital experiences.</p>
 </div>
-<div class="card">
-<h1>💻</h1>
+
+<div class="card reveal">
+<div class="icon">💻</div>
 <h3>Web Development</h3>
-<p>Powerful and responsive websites.</p>
+<p>Responsive, powerful and elegant websites built for the modern world.</p>
 </div>
-<div class="card">
-<h1>⚡</h1>
+
+<div class="card reveal">
+<div class="icon">🚀</div>
 <h3>Innovation</h3>
-<p>Ideas that inspire the future.</p>
+<p>Fresh ideas and futuristic solutions that inspire new possibilities.</p>
+</div>
+
 </div>
 </div>
 </section>
+
+<!-- ABOUT -->
 
 <section class="about" id="about">
-<h2>About NovaSpace</h2>
-<p style="margin-top:20px;line-height:1.8">
-We believe in creativity, innovation and
-making the digital world more beautiful.
+<div class="container about-content">
+
+<div class="about-art reveal">🌌</div>
+
+<div class="about-text reveal">
+<small style="color:#48dfff;letter-spacing:3px">OUR STORY</small>
+<h2>We Dream Beyond Limits.</h2>
+<p>
+NovaSpace is a creative digital destination built
+for curious minds and ambitious dreamers.
+We believe technology and creativity can make
+the world more inspiring.
 </p>
+<a href="#contact" class="btn">Connect With Us ↗</a>
+</div>
+
+</div>
 </section>
 
+<!-- STATS -->
+
+<section>
+<div class="container">
+
+<div class="section-head reveal">
+<small>OUR VISION</small>
+<h2>A Universe of Possibilities</h2>
+<p>Our journey is just beginning.</p>
+</div>
+
+<div class="stats">
+<div class="stat reveal">
+<h3>∞</h3>
+<p>Infinite Ideas</p>
+</div>
+
+<div class="stat reveal">
+<h3>24/7</h3>
+<p>Digital Inspiration</p>
+</div>
+
+<div class="stat reveal">
+<h3>100%</h3>
+<p>Creative Passion</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="container">
+
+<div class="section-head reveal">
+<small>GET IN TOUCH</small>
+<h2>Let's Create Something Amazing</h2>
+<p>Have a creative idea? Send us a message.</p>
+</div>
+
+<div class="contact-box reveal">
+<form onsubmit="sendMessage(event)">
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Your Email" required>
+
+<textarea placeholder="Tell us about your idea..." required></textarea>
+
+<button class="btn" type="submit">Send Message ✉</button>
+
+<p id="status" style="margin-top:18px;color:#48dfff"></p>
+
+</form>
+</div>
+
+</div>
+</section>
+
+<!-- FOOTER -->
+
 <footer>
+<div class="container">
+<div class="logo">NovaSpace.</div>
+<p>Beyond Imagination. Beyond Limits.</p>
+<p style="margin-top:15px;font-size:13px">
 © 2026 NovaSpace. All Rights Reserved.
+</p>
+</div>
 </footer>
+
+<script>
+function toggleMenu() {
+ document.getElementById("navLinks").classList.toggle("active");
+}
+
+function closeMenu() {
+ document.getElementById("navLinks").classList.remove("active");
+}
+
+function sendMessage(event) {
+ event.preventDefault();
+ document.getElementById("status").textContent =
+ "Thank you! This is a demo form. Connect a backend to receive messages.";
+ event.target.reset();
+}
+
+const observer = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if(entry.isIntersecting) {
+   entry.target.classList.add("visible");
+  }
+ });
+}, {threshold:0.12});
+
+document.querySelectorAll(".reveal").forEach(element => {
+ observer.observe(element);
+});
+</script>
 
 </body>
 </html>
